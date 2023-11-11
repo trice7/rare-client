@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-// import Button from 'react-bootstrap/Button';
-// import Link from 'next/link';
+import Button from 'react-bootstrap/Button';
+import Link from 'next/link';
 import { getPosts } from '../api/postData';
 import PostCard from '../components/postcard';
 
@@ -19,6 +19,9 @@ export default function Posts() {
 
   return (
     <div>
+      <Link href="/posts/new" passHref>
+        <Button>Add A Post</Button>
+      </Link>
       {
         posts.length === 0 ? (
           <>
