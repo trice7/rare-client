@@ -20,8 +20,16 @@ function AppNavBar({ token, setToken }) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             {token ? (
-              <Link passHref href="/">
+              <Link passHref href="/posts">
                 <Nav.Link>Posts</Nav.Link>
+              </Link>
+            ) : (
+              ''
+            )}
+
+            {token ? (
+              <Link passHref href="/userList">
+                <Nav.Link>User Management</Nav.Link>
               </Link>
             ) : (
               ''
@@ -33,7 +41,7 @@ function AppNavBar({ token, setToken }) {
                 className="button is-outlined"
                 onClick={() => {
                   setToken('');
-                  navigate('/login');
+                  navigate.push('/login');
                 }}
               >
                 Logout

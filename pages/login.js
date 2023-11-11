@@ -18,12 +18,16 @@ function Login({ setToken }) {
       password: password.current.value,
     };
 
+    console.warn(user);
+
     loginUser(user).then((res) => {
       if ('valid' in res && res.valid) {
         setToken(res.token);
         navigate.push('/');
+        console.warn('WE UP!');
       } else {
         setisUnsuccessful(true);
+        console.warn('FUCK!');
       }
     });
   };
