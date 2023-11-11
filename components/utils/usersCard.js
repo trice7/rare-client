@@ -1,12 +1,12 @@
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 
 export default function UserCard({ userObj }) {
   return (
     <Card
       style={{
-        width: '14rem', marginRight: '15px', marginLeft: '15', marginTop: '15px', height: '15rem',
+        width: '14rem', marginBottom: '50px', marginRight: '15px', marginLeft: '15', marginTop: '15px', height: '15rem',
       }}
       className="userCard"
     >
@@ -17,6 +17,7 @@ export default function UserCard({ userObj }) {
         <p>{userObj.bio}</p>
         <p>{userObj.email}</p>
       </Card.Body>
+      <Button variant="success"> View User </Button>
     </Card>
   );
 }
