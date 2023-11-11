@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "rare-client-side",
   "private": true,
   "version": "1.0.0",
-  "author": "Update Name!",
+  "author": "Evan Morgan",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
