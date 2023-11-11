@@ -28,6 +28,14 @@ function AppNavBar({ token, setToken }) {
             )}
 
             {token ? (
+              <Link passHref href="/userList">
+                <Nav.Link>User Management</Nav.Link>
+              </Link>
+            ) : (
+              ''
+            )}
+
+            {token ? (
               <button
                 type="button"
                 className="button is-outlined"
