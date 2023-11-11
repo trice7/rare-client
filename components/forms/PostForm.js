@@ -5,7 +5,7 @@ import FloatingLabel from 'react-bootstrap/FloatingLabel';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { createPost, updatePost } from '../../api/postData';
-import getUsers from '../../api/userData';
+// import getUsers from '../../api/userData';
 import getCategories from '../../api/categoryData';
 
 const initialState = {
