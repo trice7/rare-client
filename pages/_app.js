@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps }) {
   }, []);
 
   useEffect(() => {
-    if (!['/login', '/register'].includes(router.route) && token !== null) {
+    if (!['/login', '/register', '/posts'].includes(router.route) && token !== null) {
       if (!token) {
         router.push('/login');
       }
