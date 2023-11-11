@@ -1,4 +1,4 @@
-const endpoint = 'http://127.0.0.1:8000';
+const endpoint = 'http://localhost:8088';
 
 const getAllTags = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/tags`, {
