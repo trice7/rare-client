@@ -1,18 +1,13 @@
-const endpoint = 'http://localhost:8088';
-
-const getSingleUserDetails = (id) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/users.json`, {
+const getSingleUser = (user) => Promise((resolve, reject) => {
+  fetch(`http://localhost:8088/users/${user}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
     },
   })
     .then((response) => response.json())
-    .then((data) => {
-      const userDetails = Object.values(data).filter((user) => user.id === id);
-      resolve(userDetails);
-    })
+    .then((data) => resolve(data))
     .catch(reject);
 });
 
-export default getSingleUserDetails;
+export default getSingleUser;
