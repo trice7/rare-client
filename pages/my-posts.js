@@ -19,7 +19,7 @@ export default function Posts() {
   console.warn(posts);
 
   return (
-    <div>
+    <div id="my-posts">
       {
         posts.length === 0 ? (
           <>

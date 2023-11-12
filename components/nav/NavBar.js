@@ -57,7 +57,7 @@ function AppNavBar({ token, setToken }) {
             {token ? (
               <button
                 type="button"
-                className="button is-outlined"
+                className="buttonNav"
                 onClick={() => {
                   setToken('');
                   navigate.push('/login');

@@ -134,7 +134,7 @@ function PostForm({ obj }) {
       </FloatingLabel>
 
       {/* category SELECT */}
-      <FloatingLabel controlId="floatingSelect" label="category">
+      <FloatingLabel controlId="floatingSelect">
         <Form.Select
           aria-label="category"
           name="category_id"
@@ -185,7 +185,7 @@ function PostForm({ obj }) {
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
-      <Button type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
+      <Button variant="dark">{obj.id ? 'Update' : 'Create'} Post</Button>
     </Form>
   );
 }
