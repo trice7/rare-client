@@ -16,4 +16,19 @@ const getUsers = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getUsers;
+const getSingleUser = (id) => new Promise((resolve, reject) => {
+  fetch(`http://localhost:8088/users/${id}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export {
+  getSingleUser,
+  getUsers,
+};
