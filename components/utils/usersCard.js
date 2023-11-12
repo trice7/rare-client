@@ -6,7 +6,7 @@ export default function UserCard({ userObj }) {
   return (
     <Card
       style={{
-        width: '14rem', marginBottom: '50px', marginRight: '15px', marginLeft: '15', marginTop: '15px', height: '15rem',
+        width: '14rem', marginBottom: '50px', marginRight: '15px', marginLeft: '20px', marginTop: '15px', height: '18rem',
       }}
       className="userCard"
     >
@@ -17,7 +17,7 @@ export default function UserCard({ userObj }) {
         <p>{userObj.bio}</p>
         <p>{userObj.email}</p>
       </Card.Body>
-      <Button variant="success"> View User </Button>
+      <Button variant="dark"> View User </Button>
     </Card>
   );
 }
