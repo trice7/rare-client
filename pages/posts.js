@@ -18,10 +18,7 @@ export default function Posts() {
   console.warn(posts);
 
   return (
-    <div>
-      <Link href="/posts/new" passHref>
-        <Button>Add A Post</Button>
-      </Link>
+    <div id="posts">
       {
         posts.length === 0 ? (
           <>
@@ -35,6 +32,9 @@ export default function Posts() {
           </div>
         )
       }
+      <Link href="/posts/new" passHref>
+        <Button variant="dark">Add A Post</Button>
+      </Link>
     </div>
   );
 }
