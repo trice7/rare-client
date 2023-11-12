@@ -28,6 +28,18 @@ const getSinglePost = (post) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getUsersPosts = (post) => new Promise((resolve, reject) => {
+  fetch(`http://localhost:8088/posts?user_id=${post}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 const deletePost = (post) => new Promise((resolve, reject) => {
   fetch(`http://localhost:8088/posts/${post}`, {
     method: 'DELETE',
@@ -82,4 +94,5 @@ export {
   deletePost,
   createPost,
   updatePost,
+  getUsersPosts,
 };
