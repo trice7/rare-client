@@ -86,17 +86,9 @@ function PostForm({ obj }) {
     }
   };
 
-  const handleTheClick = () => {
-    console.warn(formInput);
-    console.warn(formInput.tags);
-    console.warn(checkedTags);
-  };
-
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Post</h2>
-
-      <Button onClick={handleTheClick}>Click me</Button>
 
       {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Post Title" className="mb-3">
