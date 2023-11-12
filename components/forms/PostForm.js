@@ -6,6 +6,7 @@ import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
 import { createPost, updatePost } from '../../api/postData';
 import getCategories from '../../api/categoryData';
+import { createPostTag, getAllTags } from '../../api/tags';
 
 const initialState = {
   user_id: '',
@@ -14,16 +15,20 @@ const initialState = {
   publication_date: '',
   image_url: '',
   content: '',
+  tags: [],
 };
 
 function PostForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   const [categories, setCategories] = useState([]);
+  const [tags, setTags] = useState([]);
   const router = useRouter();
+
+  let checkedTags = [];
 
   const userId = localStorage.auth_token;
 
-  console.warn(obj.id);
+  // console.warn(tags);
 
   useEffect(() => {
     if (obj.id) setFormInput(obj);
@@ -31,6 +36,7 @@ function PostForm({ obj }) {
 
   useEffect(() => {
     getCategories().then((res) => setCategories(res));
+    getAllTags().then((res) => setTags(res));
   }, []);
 
   const handleChange = (e) => {
@@ -41,21 +47,56 @@ function PostForm({ obj }) {
     }));
   };
 
+  const handleTagChange = (e) => {
+    // console.warn(formInput);
+    if (e.target.checked) {
+      checkedTags.push(e.target.value);
+      setFormInput((prevState) => ({
+        ...prevState,
+        tags: formInput.tags.concat(checkedTags),
+      }));
+    } else {
+      checkedTags = formInput.tags;
+      const index = checkedTags.indexOf(e.target.value);
+      checkedTags.splice(index, 1);
+      setFormInput((prevState) => ({
+        ...prevState,
+        tags: checkedTags,
+      }));
+    }
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const payload = { ...formInput, user_id: userId };
     if (obj.id) {
       updatePost(payload).then(() => router.push(`/posts/${obj.id}`));
     } else {
-      createPost(payload).then(() => {
+      createPost(payload).then((data) => {
+        formInput.tags?.forEach((tag) => {
+          console.warn(data.id);
+          const tagPayload = {
+            post_id: data.id,
+            tag_id: tag,
+          };
+          createPostTag(tagPayload).then();
+        });
         router.push('/');
       });
     }
   };
 
+  const handleTheClick = () => {
+    console.warn(formInput);
+    console.warn(formInput.tags);
+    console.warn(checkedTags);
+  };
+
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Create'} Post</h2>
+
+      <Button onClick={handleTheClick}>Click me</Button>
 
       {/* TITLE INPUT  */}
       <FloatingLabel controlId="floatingInput1" label="Post Title" className="mb-3">
@@ -77,7 +118,6 @@ function PostForm({ obj }) {
           name="image_url"
           value={formInput.image_url}
           onChange={handleChange}
-          required
         />
       </FloatingLabel>
 
@@ -93,6 +133,7 @@ function PostForm({ obj }) {
         />
       </FloatingLabel>
 
+      {/* category SELECT */}
       <FloatingLabel controlId="floatingSelect">
         <Form.Select
           aria-label="category"
@@ -115,6 +156,20 @@ function PostForm({ obj }) {
           }
         </Form.Select>
       </FloatingLabel>
+
+      <div>
+        {tags.map((tag) => (
+          <div key={tag.id}>
+            <Form.Check // prettier-ignore
+              type="checkbox"
+              label={tag.label}
+              name="tags"
+              value={tag.id}
+              onChange={handleTagChange}
+            />
+          </div>
+        ))}
+      </div>
 
       {/* DESCRIPTION TEXTAREA  */}
       <FloatingLabel controlId="floatingTextarea" label="Content" className="mb-3">

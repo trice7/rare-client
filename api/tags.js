@@ -1,4 +1,4 @@
-const endpoint = 'http://127.0.0.1:8000';
+const endpoint = 'http://localhost:8088';
 
 const getAllTags = () => new Promise((resolve, reject) => {
   fetch(`${endpoint}/tags`, {
@@ -73,6 +73,19 @@ const getPostTags = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createPostTag = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/posttags`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 const getSinglePostTag = (id) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/posttags/${id}`, {
     method: 'GET',
@@ -105,4 +118,5 @@ export {
   deletePostTag,
   updateTag,
   deleteTag,
+  createPostTag,
 };

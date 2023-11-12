@@ -49,6 +49,12 @@ function AppNavBar({ token, setToken }) {
             )}
 
             {token ? (
+              <Link passHref href="/tags">
+                <Nav.Link>Tag Management</Nav.Link>
+              </Link>
+            ) : ''}
+
+            {token ? (
               <button
                 type="button"
                 className="buttonNav"
