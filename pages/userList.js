@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import getUsers from '../api/usersData';
+import { getUsers } from '../api/usersData';
 import UserCard from '../components/utils/usersCard';
 
 export default function UserList() {

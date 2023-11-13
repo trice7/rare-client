@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link';
+import { Image } from 'react-bootstrap';
 import Comment from '../../components/Comment';
 import { deletePost, getSinglePost } from '../../api/postData';
 
@@ -27,7 +28,10 @@ export default function PostDetails() {
   // };
 
   return (
-    <div>
+    <div style={{ display: 'flex' }}>
+      <div>
+        <Image style={{ width: '17rem', height: '20rem' }} src={postDetails.image_url} rounded />
+      </div>
       <div className="mt-5 d-flex flex-wrap">
         <div className="d-flex flex-column">
           <img src={postDetails.image} alt={postDetails.title} style={{ width: '300px' }} />
@@ -48,11 +52,11 @@ export default function PostDetails() {
             Delete Post
           </Button>
         </div>
-      </div>
-      <div>
-        {postDetails.comments?.map((comment) => (
-          <Comment key={comment.id} obj={comment} />
-        ))}
+        <div>
+          {postDetails.comments?.map((comment) => (
+            <Comment key={comment.id} obj={comment} />
+          ))}
+        </div>
       </div>
     </div>
   );

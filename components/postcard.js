@@ -7,9 +7,9 @@ import Link from 'next/link';
 export default function PostCard({ postObj }) {
   console.warn(postObj);
   return (
-    <Card style={{ width: '17rem', marginRight: '20px', height: '20rem' }} className="postCard">
+    <Card style={{ width: '17rem', marginRight: '20px' }} className="postCard">
       <Card.Title>{postObj.title}</Card.Title>
-      <Card.Img variant="top" alt={postObj.title} style={{ height: '400px' }} />
+      <Card.Img variant="top" alt={postObj.title} style={{ height: '15rem' }} src={postObj.image_url} />
       <Card.Body>
         <p>{postObj.content}</p>
         <p>Category: {postObj.category?.label}</p>
@@ -30,5 +30,6 @@ PostCard.propTypes = {
     category: PropTypes.string,
     tags: PropTypes.string,
     id: PropTypes.string,
+    image_url: PropTypes.string,
   }).isRequired,
 };
