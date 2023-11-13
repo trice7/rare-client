@@ -35,6 +35,12 @@ a {
   font-family: 'Times New Roman', Times, serif;
 }
 
+#tags {
+  text-align: center;
+  justify-content: center;
+  contain: content;
+}
+
 .catCard {
   text-align: center;
   contain: content;

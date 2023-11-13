@@ -1,5 +1,5 @@
 function Home() {
-  return 'Loading......';
+  return 'welcome';
 }
 
 export default Home;

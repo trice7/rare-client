@@ -8,7 +8,10 @@ const Tag = ({ obj }) => {
 
   return (
     <div>
-      <Card style={{ width: '9rem' }}>
+      <Card style={{
+        width: '9rem', marginTop: '20px', marginLeft: '20px', marginRight: '20px',
+      }}
+      >
         <ListGroup variant="flush">
           <ListGroup.Item>{obj.label} <PencilSquare type="button" /><XCircle /></ListGroup.Item>
         </ListGroup>
