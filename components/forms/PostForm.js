@@ -68,6 +68,7 @@ function PostForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.warn('submit hit');
     const payload = { ...formInput, user_id: userId };
     if (obj.id) {
       updatePost(payload).then(() => router.push(`/posts/${obj.id}`));
@@ -177,7 +178,7 @@ function PostForm({ obj }) {
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
-      <Button variant="dark">{obj.id ? 'Update' : 'Create'} Post</Button>
+      <Button type="submit" variant="dark">{obj.id ? 'Update' : 'Create'} Post</Button>
     </Form>
   );
 }
